@@ -1,0 +1,121 @@
+<<------------- Ticket - Mail1 --------------
+Hi!
+ 
+I&#39;ve been getting started with Twilio Video and I&#39;m running into a strange problem. I
+can create the video room just fine, but I have a feature to turn the camera on and off
+that isn&#39;t working. In my code, I&#39;m calling removeTrack(track) on the local track that I
+want to remove but it doesn&#39;t work. 
+Could you help me figure out what&#39;s wrong?
+ 
+Thanks,
+John Smith
+
+-------------- Response1 
+Hi John,
+    Thanks for reaching Twilio Support. Im Arvind and I will be assisting you in this request. 
+    There are two ways to disable the video in local-track. Assuming Javascript SDK was used provided below snippets. 
+
+Type 1: 
+    room.localParticipant.videoTracks.forEach(publication => {
+        publication.track.disable();
+    });
+
+Type 2: Although disabling a LocalVideoTrack whose source is a camera stops sending media, the camera is still reserved by the LocalVideoTrack and hence its light still stays on. In some use cases, the desired behavior might be that the light should turn off when users mutes their camera. Although this method is not recommend, this can be achieved by calling stop on the LocalVideoTrack and unpublishing it from the Room: 
+    room.localParticipant.videoTracks.forEach(publication => {
+        publication.track.stop();
+        publication.unpublish();
+    });
+
+Note: Is your Twilio SDK has be upgraded in your machine recently to 2.x? As in 2.x removeTrack() is now replaced by unpublishTrack(). 
+
+More details will be avialble in https://www.twilio.com/docs/video/javascript-getting-started#mute-your-local-media 
+
+Regards,
+Arvind Subramanian,
+Twilio Support Engineer
+
+------------- Ticket - Mail1 -------------->>
+
+
+<<------------- Ticket - Mail2 --------------
+Hi Twilio,
+ 
+I just purchased an updated SSL certificate and installed it on my server that
+receives webhooks from you, but you guys aren’t accepting it. What gives?! The
+error says “Could not find path to certificate”. If you check my server you’ll see the
+certificate is there. I’m totally down until you fix this, please get back to me ASAP.
+ 
+Best,
+I.M. Down
+
+-------------- Response2
+Hi ,
+    Thanks for reaching Twilio Support. Im Arvind and I will be assisting you in this request. Im very sorry to know that production enivornment is impacted, this must be really frustraLng for you.
+    
+    As per your mail, I assume SSL certificate that was purchased is not a self-signed certificate(self sign certificate are not supported). 
+    Can you make sure all the certificate chains are concatenated and deployed in Web server. Currently uses CAs that are approved by Mozilla(https://ccadb-public.secure.force.com/mozilla/IncludedCACertificateReport), Is your CA avaialble in that list? 
+    
+    Since the Production enivornment is impacted, for time being SSL Certiicate Validation can be disabled from https://www.twilio.com/console/project/settings .
+
+More Details in https://www.twilio.com/blog/2016/02/security-update-on-ssl-certificate-validation.html
+
+
+Regards,
+Arvind Subramanian,
+Twilio Support Engineer
+
+
+------------- Ticket - Mail2 -------------->>
+
+
+<<------------- Ticket - Mail3 --------------
+Hello,
+ 
+Our app has suddenly stopped working, please help! 
+ 
+We&#39;ve made no changes on our side. We are seeing &quot;Failed to connect to
+api.twilio.com port 443: Connection timed out.&quot; There are no notices posted on
+https://status.twilio.com/. Are you having an outage? Please help, we&#39;re completely
+down and losing business!
+ 
+Sincerely,
+Dustin Desperado
+
+-------------- Response3
+Hi Dustin,
+    We dont have outage for for last few months, so that will not be problem. Generally timeout will happen if any changes happens to Infrastructure like changes in Firewall which blocks outbound 443 port. Can you able to run below command from server CLI and share the results. 
+
+    Command 1: 
+        >ping api.twilio.com
+    Command 2:
+        >telnet api.twilio.com 443 
+
+
+
+    We also have detail documents which explains about various reasons for this error, hope it will be useful https://support.twilio.com/hc/en-us/articles/360007130274-Requirements-for-Connecting-to-the-Twilio-REST-API-and-Troubleshooting-Common-Issues 
+
+
+------------- Ticket - Mail3 -------------->>
+
+const Video = require(&quot;twilio-video&quot;);
+const token = &quot;test_token&quot;;
+const connectOptions = {video: false, audio: false, logLevel: &quot;off&quot;}
+ 
+const startRoom = function(token) {
+ console.log(&quot;hello world&quot;);
+ Video.connect(token, connectOptions)
+   .then(room =&gt; {
+     console.log(&quot;got a room&quot;);
+     return room
+   })
+   .catch(error =&gt; {
+     console.log(&quot;error&quot;);
+     return error
+   });
+}
+ 
+let room = startRoom(token);
+
+----
+
+
