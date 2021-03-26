@@ -1,0 +1,19 @@
+1) Github Merge  - Git Merge 
+2) Avoid the conflict 
+
+
+1) Github Merge  - Git Merge 
+    Merge - 
+        Github - PR 
+        VSode - Git CLI - Merge 
+
+
+Master/Main Branch  > Default 
+|____Feature Branch 1
+|____ Feature Branch 2
+|____ Feature Branch 3 
+
+
+
+1) Changes made in the Feature Branch are been merged to Main/MAster  Branch using Github PR 
+2) 
