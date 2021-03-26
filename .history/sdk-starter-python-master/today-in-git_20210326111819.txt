@@ -29,12 +29,5 @@ Master/Main Branch  > Default
 
 --------------
 
-Conflict - 80% Conflict 
--- FB Commit 
+Conflict 
 -- Merge master with your FB before creating PR 
--- Then Push 
--- Create PR 
-
-
---- Destination B and Source B same file changed ---
---- 
