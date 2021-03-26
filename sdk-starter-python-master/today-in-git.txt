@@ -16,4 +16,18 @@ Master/Main Branch  > Default
 
 
 1) Changes made in the Feature Branch are been merged to Main/MAster  Branch using Github PR 
-2) 
+2) Merge in VSCode 
+
+
+1) First Feature-branch-1 Created - api-development 
+2) Code changed in FB-1 and push to remote 
+3) In some other system new FB-2 was created 
+4) FB-1 was merged with FB-2 
+    5) So FB-2 have both code of FB-2 and FB-1 
+6) Make sure API-PR is merged first before UI PR 
+7) UI PR can be merged 
+
+--------------
+
+Conflict 
+-- Merge master with your FB before creating PR 
