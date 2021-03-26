@@ -23,8 +23,8 @@ $(function() {
     }
     $chatWindow.append($msg);
   }
-
-  // Helper function to print chat message to the chat window
+// test
+  // Helper function to display chat img to the chat window
   function displayImgMessage(fromUser, message) {
     var $user = $('<span class="username">').text(fromUser + ':');
     if (fromUser === username) {
